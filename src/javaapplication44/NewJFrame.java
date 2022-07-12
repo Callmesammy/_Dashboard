@@ -1,10 +1,10 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
+
 package javaapplication44;
 
 import com.formdev.flatlaf.intellijthemes.FlatArcIJTheme;
+import components.EventMain;
+import components.Loading;
+import components.PublicEvent;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Toolkit;
@@ -28,24 +28,40 @@ private void init(){
     setIconImage(new ImageIcon(getClass().getResource("/icon/icon.png")).getImage());
         ComponentResizer com = new ComponentResizer();
         com.setSnapSize(new Dimension(10,10));
-        com.setMinimumSize(new Dimension(870,450));
-     
-        
+        com.setMinimumSize(new Dimension(700,450));
+        body1.setVisible(true);
+        loading1.setVisible(false);
         com.registerComponent(this);
         com.setMaximumSize(Toolkit.getDefaultToolkit().getScreenSize());
-    
+        
+        PublicEvent.install().addEventmain(new EventMain() {
+        @Override
+        public void ShowLoading(boolean show) {
+        loading1.setVisible(show);
+        }
+
+        @Override
+        public void initChat() {
+        body1.setVisible(true);
+        }
+        });
     }
 @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel1 = new javax.swing.JPanel();
         head = new javax.swing.JPanel();
         minimizw = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
-        body = new components.body();
+        body = new javax.swing.JLayeredPane();
+        loading1 = new components.Loading();
+        body1 = new components.body();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
+
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
         head.setBackground(new java.awt.Color(205, 207, 206));
         head.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
@@ -91,37 +107,50 @@ private void init(){
         );
         headLayout.setVerticalGroup(
             headLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(minimizw)
-            .addComponent(jButton2)
+            .addGroup(headLayout.createSequentialGroup()
+                .addGroup(headLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(minimizw)
+                    .addComponent(jButton2))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        body.setLayout(new java.awt.CardLayout());
+        body.add(loading1, "card3");
+        body.add(body1, "card2");
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(head, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(body, javax.swing.GroupLayout.DEFAULT_SIZE, 1132, Short.MAX_VALUE)
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addComponent(head, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(body, javax.swing.GroupLayout.DEFAULT_SIZE, 494, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(body, javax.swing.GroupLayout.DEFAULT_SIZE, 1062, Short.MAX_VALUE)
-            .addComponent(head, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addComponent(head, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0)
-                .addComponent(body, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(0, 0, 0))
         );
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
-    private void minimizwActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_minimizwActionPerformed
-        this.setState(JFrame.ICONIFIED);
-    }//GEN-LAST:event_minimizwActionPerformed
-
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-      System.exit(0);
-    }//GEN-LAST:event_jButton2ActionPerformed
 
     private void headMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_headMouseEntered
         pX = evt.getX();
@@ -132,6 +161,14 @@ private void init(){
         this.setLocation(this.getLocation().x + evt.getX() - pX,
             this.getLocation().y + evt.getY() - pY);
     }//GEN-LAST:event_headMouseDragged
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        System.exit(0);
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void minimizwActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_minimizwActionPerformed
+        this.setState(JFrame.ICONIFIED);
+    }//GEN-LAST:event_minimizwActionPerformed
 private int pX;
 private int pY;
    
@@ -168,9 +205,12 @@ private int pY;
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private components.body body;
+    private javax.swing.JLayeredPane body;
+    private components.body body1;
     private javax.swing.JPanel head;
     private javax.swing.JButton jButton2;
+    private javax.swing.JPanel jPanel1;
+    private components.Loading loading1;
     private javax.swing.JButton minimizw;
     // End of variables declaration//GEN-END:variables
 }

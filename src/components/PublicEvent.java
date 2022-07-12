@@ -7,6 +7,7 @@ public class PublicEvent {
    
     private static PublicEvent instance;
     private EventLogin EventLogin;
+    private EventMain eventMain;
     
     public static PublicEvent install(){
         
@@ -17,6 +18,17 @@ public class PublicEvent {
 }
     
 
+    public void addEventmain (EventMain event){
+        this.eventMain = event;
+    }
+    
+    public EventMain getEventMain(){
+        return eventMain;
+    }
+    
+    public EventMain addEventMain(){
+        return eventMain;
+    }
     public PublicEvent() {
     
  

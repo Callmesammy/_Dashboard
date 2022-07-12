@@ -112,7 +112,15 @@ public class Panel_Login extends javax.swing.JPanel {
     }//GEN-LAST:event_ibregisterActionPerformed
 
     private void ibloginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ibloginActionPerformed
-    PublicEvent.install().getEventLogin().Login();
+        PublicEvent.install().addEventMain().ShowLoading(true);
+        try {
+       Thread.sleep(3000);
+
+        } catch (Exception e) {
+        }
+           
+            PublicEvent.install().getEventMain().initChat();
+            setVisible(false);PublicEvent.install().getEventLogin().Login();
     }//GEN-LAST:event_ibloginActionPerformed
 
 
