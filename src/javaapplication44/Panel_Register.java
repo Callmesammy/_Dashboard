@@ -2,6 +2,7 @@
 package javaapplication44;
 
 import components.PublicEvent;
+import java.awt.Color;
 
 
 public class Panel_Register extends javax.swing.JPanel {
@@ -49,6 +50,14 @@ public class Panel_Register extends javax.swing.JPanel {
         ibregister.setText("Back Login");
         ibregister.setContentAreaFilled(false);
         ibregister.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        ibregister.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                ibregisterMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                ibregisterMouseExited(evt);
+            }
+        });
         ibregister.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ibregisterActionPerformed(evt);
@@ -125,6 +134,14 @@ public class Panel_Register extends javax.swing.JPanel {
     private void ibloginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ibloginActionPerformed
         PublicEvent.install().getEventLogin().Login();
     }//GEN-LAST:event_ibloginActionPerformed
+
+    private void ibregisterMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ibregisterMouseEntered
+        ibregister.setForeground (new Color(44, 114, 255));
+    }//GEN-LAST:event_ibregisterMouseEntered
+
+    private void ibregisterMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ibregisterMouseExited
+      ibregister.setForeground(new Color(92,221,255));
+    }//GEN-LAST:event_ibregisterMouseExited
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -55,7 +55,7 @@ public class body extends javax.swing.JPanel {
         picBox1.setImage(new javax.swing.ImageIcon(getClass().getResource("/icon/LOad.png"))); // NOI18N
 
         jLabel2.setFont(new java.awt.Font("sansserif", 1, 18)); // NOI18N
-        jLabel2.setText("Welcome");
+        jLabel2.setText("Welcome ");
 
         picBox1.setLayer(jLabel2, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
@@ -65,8 +65,8 @@ public class body extends javax.swing.JPanel {
             picBox1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(picBox1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 135, Short.MAX_VALUE)
-                .addGap(443, 443, 443))
+                .addComponent(jLabel2)
+                .addContainerGap(441, Short.MAX_VALUE))
         );
         picBox1Layout.setVerticalGroup(
             picBox1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
